@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admissions — Parklands Secondary School</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Steps */
+    .steps-section { background:var(--white); }
+    .steps-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative; }
+    .steps-grid::before {
+      content:''; position:absolute; top:32px; left:calc(12.5% + 16px); right:calc(12.5% + 16px);
+      height:2px; background:var(--gold); opacity:0.3; z-index:0;
+    }
+    .step-item { text-align:center; padding:0 16px; position:relative; z-index:1; }
+    .step-num {
+      width:64px; height:64px; border-radius:50%;
+      background:var(--navy); color:var(--white);
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:700;
+      margin:0 auto 20px; border:3px solid var(--white);
+      box-shadow:0 0 0 2px var(--gold);
+    }
+    .step-item h4 { font-family:'DM Sans',sans-serif; font-size:0.95rem; font-weight:600; margin-bottom:8px; }
+
+    /* Requirements */
+    .req-section { background:var(--cream); }
+    .req-grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+    .req-card {
+      background:var(--white); border-radius:var(--radius-md);
+      padding:36px; border:1px solid var(--border); box-shadow:var(--shadow-sm);
+    }
+    .req-card h3 { margin-bottom:20px; display:flex; align-items:center; gap:12px; }
+    .req-card h3 span { font-size:1.5rem; }
+    .req-list li {
+      padding:10px 0; border-bottom:1px solid var(--border);
+      font-size:0.92rem; display:flex; gap:10px; align-items:flex-start;
+    }
+    .req-list li:last-child { border-bottom:none; }
+    .req-list li::before { content:'→'; color:var(--gold); font-weight:700; flex-shrink:0; }
+
+    /* Application form */
+    .form-section { background:var(--white); }
+    .form-wrapper {
+      max-width:760px; margin:0 auto;
+      background:var(--cream); border-radius:var(--radius-lg);
+      padding:56px; border:1px solid var(--border);
+    }
+    .form-section-title {
+      font-family:'DM Sans',sans-serif; font-size:0.72rem; font-weight:700;
+      letter-spacing:0.14em; text-transform:uppercase;
+      color:var(--gold); margin-bottom:20px; margin-top:32px; padding-top:32px;
+      border-top:1px solid var(--border);
+    }
+    .form-section-title:first-of-type { margin-top:0; padding-top:0; border-top:none; }
+
+    /* Fees */
+    .fees-section { background:var(--cream); }
+    .fees-table {
+      width:100%; border-collapse:collapse;
+      background:var(--white); border-radius:var(--radius-md);
+      overflow:hidden; box-shadow:var(--shadow-sm); max-width:680px; margin:0 auto;
+    }
+    .fees-table th {
+      background:var(--navy); color:var(--white); padding:16px 24px;
+      text-align:left; font-size:0.82rem; font-weight:600;
+      letter-spacing:0.06em; text-transform:uppercase;
+    }
+    .fees-table td { padding:14px 24px; border-bottom:1px solid var(--border); font-size:0.92rem; }
+    .fees-table tr:last-child td { border-bottom:none; font-weight:700; background:var(--cream); }
+    .fees-table tr:hover td { background:var(--cream); }
+
+    /* Success message */
+    .success-msg {
+      display:none; background:rgba(34,197,94,0.12); border:1px solid rgba(34,197,94,0.3);
+      border-radius:var(--radius-md); padding:20px 24px; margin-bottom:24px;
+      color:#15803d; font-weight:500; text-align:center;
+    }
+
+    @media (max-width:768px) {
+      .steps-grid { grid-template-columns:1fr 1fr; }
+      .steps-grid::before { display:none; }
+      .req-grid { grid-template-columns:1fr; }
+      .form-wrapper { padding:32px 24px; }
+    }
+    @media (max-width:480px) {
+      .steps-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>Admissions</span></div>
+    <span class="section-label page-hero-label">Enrolment 2026</span>
+    <h1>Join Parklands SS</h1>
+    <p>Applications for the 2026 academic year are now open. Limited places available across all three academic streams.</p>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="steps-section section">
+  <div class="container text-center">
+    <span class="section-label">Process</span>
+    <h2 class="section-title">How to Apply</h2>
+    <div class="gold-line" style="margin-bottom:56px;"></div>
+    <div class="steps-grid reveal">
+      <div class="step-item">
+        <div class="step-num">1</div>
+        <h4>Download &amp; Review</h4>
+        <p>Review our admissions requirements and prospectus to ensure eligibility.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">2</div>
+        <h4>Submit Application</h4>
+        <p>Complete the online form below or collect a physical form from our admin office.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">3</div>
+        <h4>Entrance Assessment</h4>
+        <p>Shortlisted applicants sit a brief entrance assessment and interview.</p>
+      </div>
+      <div class="step-item">
+        <div class="step-num">4</div>
+        <h4>Offer &amp; Enrolment</h4>
+        <p>Successful applicants receive a formal offer letter and complete enrolment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REQUIREMENTS -->
+<section class="req-section section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px;" class="reveal">
+      <span class="section-label">Eligibility</span>
+      <h2 class="section-title">Admission Requirements</h2>
+      <div class="gold-line"></div>
+    </div>
+    <div class="req-grid reveal">
+      <div class="req-card">
+        <h3><span>📋</span> Grade 8 Entry</h3>
+        <ul class="req-list">
+          <li>Grade 7 results slip (Primary School Leaving Certificate)</li>
+          <li>Minimum 50% overall average in Grade 7</li>
+          <li>Birth certificate (original + copy)</li>
+          <li>Two recent passport photographs</li>
+          <li>Completed application form</li>
+          <li>Non-refundable application fee: ZMW 150</li>
+        </ul>
+      </div>
+      <div class="req-card">
+        <h3><span>📋</span> Transfer Students (Gr 9–11)</h3>
+        <ul class="req-list">
+          <li>Latest school report / academic transcript</li>
+          <li>Transfer letter from previous school</li>
+          <li>Birth certificate (original + copy)</li>
+          <li>Two recent passport photographs</li>
+          <li>Completed application form</li>
+          <li>Non-refundable application fee: ZMW 150</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEES -->
+<section class="fees-section section">
+  <div class="container text-center">
+    <span class="section-label">Costs</span>
+    <h2 class="section-title">School Fees 2026</h2>
+    <div class="gold-line" style="margin-bottom:48px;"></div>
+    <div class="reveal" style="overflow-x:auto;">
+      <table class="fees-table">
+        <thead>
+          <tr><th>Fee Category</th><th>Term 1</th><th>Term 2</th><th>Term 3</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Tuition Fee</td>
+            <td>ZMW 1,200</td><td>ZMW 1,200</td><td>ZMW 1,200</td>
+          </tr>
+          <tr>
+            <td>Development Levy</td>
+            <td>ZMW 300</td><td>ZMW 300</td><td>ZMW 300</td>
+          </tr>
+          <tr>
+            <td>Sports &amp; Activities</td>
+            <td>ZMW 150</td><td>ZMW 150</td><td>ZMW 150</td>
+          </tr>
+          <tr>
+            <td>Library Fee</td>
+            <td>ZMW 80</td><td>ZMW 80</td><td>ZMW 80</td>
+          </tr>
+          <tr>
+            <td><strong>Total Per Term</strong></td>
+            <td><strong>ZMW 1,730</strong></td>
+            <td><strong>ZMW 1,730</strong></td>
+            <td><strong>ZMW 1,730</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:20px;font-size:0.85rem;color:var(--text-light);">* Fees are subject to review. Uniform and stationery costs are additional. Payment plans available on request.</p>
+  </div>
+</section>
+
+<!-- APPLICATION FORM -->
+<section class="form-section section" id="apply">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px;" class="reveal">
+      <span class="section-label">Apply Online</span>
+      <h2 class="section-title">Submit Your Application</h2>
+      <div class="gold-line" style="margin-bottom:16px;"></div>
+      <p style="max-width:520px;margin:0 auto;">Fill in the form below and we'll be in touch within 5 working days to confirm receipt and next steps.</p>
+    </div>
+
+    <div class="form-wrapper reveal">
+      <div class="success-msg" id="successMsg">
+        ✅ Application submitted successfully! We'll contact you within 5 working days.
+      </div>
+
+      <form id="admissionForm" novalidate>
+        <div class="form-section-title">Student Information</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="studentFirst">Student First Name *</label>
+            <input type="text" id="studentFirst" placeholder="e.g. Chanda" required>
+          </div>
+          <div class="form-group">
+            <label for="studentLast">Student Surname *</label>
+            <input type="text" id="studentLast" placeholder="e.g. Mwale" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="dob">Date of Birth *</label>
+            <input type="date" id="dob" required>
+          </div>
+          <div class="form-group">
+            <label for="gender">Gender *</label>
+            <select id="gender" required>
+              <option value="">Select gender</option>
+              <option>Male</option>
+              <option>Female</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="grade">Applying for Grade *</label>
+            <select id="grade" required>
+              <option value="">Select grade</option>
+              <option>Grade 8</option>
+              <option>Grade 9 (Transfer)</option>
+              <option>Grade 10 (Transfer)</option>
+              <option>Grade 11 (Transfer)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="stream">Preferred Stream *</label>
+            <select id="stream" required>
+              <option value="">Select stream</option>
+              <option>Science &amp; Technology</option>
+              <option>Humanities &amp; Arts</option>
+              <option>Commerce &amp; Economics</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="prevSchool">Previous School *</label>
+          <input type="text" id="prevSchool" placeholder="Name of previous school" required>
+        </div>
+
+        <div class="form-section-title">Parent / Guardian Information</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="parentName">Parent / Guardian Full Name *</label>
+            <input type="text" id="parentName" placeholder="Full name" required>
+          </div>
+          <div class="form-group">
+            <label for="relationship">Relationship to Student *</label>
+            <select id="relationship" required>
+              <option value="">Select</option>
+              <option>Mother</option>
+              <option>Father</option>
+              <option>Guardian</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="parentPhone">Phone Number *</label>
+            <input type="tel" id="parentPhone" placeholder="+260 9XX XXX XXX" required>
+          </div>
+          <div class="form-group">
+            <label for="parentEmail">Email Address *</label>
+            <input type="email" id="parentEmail" placeholder="your@email.com" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="address">Home Address</label>
+          <input type="text" id="address" placeholder="Residential address">
+        </div>
+
+        <div class="form-section-title">Additional Information</div>
+        <div class="form-group">
+          <label for="message">Additional Notes or Questions</label>
+          <textarea id="message" placeholder="Any special needs, questions, or information you'd like us to know..."></textarea>
+        </div>
+
+        <div style="margin-top:32px;text-align:center;">
+          <button type="submit" class="btn btn-primary" style="min-width:220px;justify-content:center;">
+            Submit Application →
+          </button>
+          <p style="font-size:0.8rem;color:var(--text-light);margin-top:12px;">By submitting this form you agree to our privacy policy.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script src="components.js"></script>
+<script>
+  document.getElementById('admissionForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('successMsg').style.display = 'block';
+    this.reset();
+    document.getElementById('successMsg').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+</script>
+</body>
+</html>

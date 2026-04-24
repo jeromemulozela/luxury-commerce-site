@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Parklands Secondary School</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Contact info cards */
+    .contact-info-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-bottom:64px; }
+    .contact-info-card {
+      background:var(--white); border-radius:var(--radius-md);
+      padding:32px 24px; text-align:center;
+      border:1px solid var(--border); box-shadow:var(--shadow-sm);
+      transition:var(--transition);
+    }
+    .contact-info-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-md); border-color:var(--gold); }
+    .contact-icon {
+      width:60px; height:60px; border-radius:16px;
+      background:var(--navy); margin:0 auto 18px;
+      display:flex; align-items:center; justify-content:center; font-size:1.6rem;
+    }
+    .contact-info-card h4 {
+      font-family:'DM Sans',sans-serif; font-size:0.72rem; font-weight:700;
+      letter-spacing:0.14em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;
+    }
+    .contact-info-card p { font-size:0.9rem; line-height:1.7; }
+    .contact-info-card a { color:var(--navy); font-weight:500; }
+    .contact-info-card a:hover { color:var(--gold); }
+
+    /* Main layout */
+    .contact-main { background:var(--white); }
+    .contact-layout { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; }
+
+    /* Form */
+    .contact-form-wrap {  }
+    .contact-form-wrap h2 { margin-bottom:8px; }
+    .contact-form-wrap > p { margin-bottom:32px; }
+    .contact-form { }
+
+    .success-msg {
+      display:none; background:rgba(34,197,94,0.12); border:1px solid rgba(34,197,94,0.3);
+      border-radius:var(--radius-md); padding:18px 24px; margin-bottom:20px;
+      color:#15803d; font-weight:500; text-align:center;
+    }
+
+    /* Map */
+    .map-wrap { }
+    .map-wrap h2 { margin-bottom:8px; }
+    .map-wrap > p { margin-bottom:24px; }
+    .map-frame {
+      width:100%; height:360px; border-radius:var(--radius-md);
+      overflow:hidden; border:1px solid var(--border); box-shadow:var(--shadow-sm);
+      background:var(--cream-dark); display:flex; align-items:center; justify-content:center;
+      flex-direction:column; gap:12px; position:relative;
+    }
+    .map-frame iframe {
+      width:100%; height:100%; border:none; display:block;
+    }
+    .map-placeholder {
+      text-align:center; padding:32px;
+    }
+    .map-placeholder .map-icon { font-size:3rem; margin-bottom:12px; }
+    .map-placeholder p { font-size:0.9rem; color:var(--text-mid); }
+    .map-placeholder a {
+      display:inline-flex; gap:6px; align-items:center;
+      margin-top:14px; color:var(--navy); font-weight:600; font-size:0.88rem;
+    }
+    .map-placeholder a:hover { color:var(--gold); }
+
+    /* Office hours */
+    .hours-table { width:100%; margin-top:24px; }
+    .hours-row {
+      display:flex; justify-content:space-between;
+      padding:10px 0; border-bottom:1px solid var(--border);
+      font-size:0.9rem;
+    }
+    .hours-row:last-child { border-bottom:none; }
+    .hours-day { font-weight:600; color:var(--text); }
+    .hours-time { color:var(--text-mid); }
+    .hours-closed { color:#EF4444; }
+
+    /* Dept contacts */
+    .dept-section { background:var(--cream); }
+    .dept-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    .dept-card {
+      background:var(--white); border-radius:var(--radius-md);
+      padding:28px; border:1px solid var(--border); box-shadow:var(--shadow-sm);
+      transition:var(--transition);
+    }
+    .dept-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-md); }
+    .dept-card h4 { margin-bottom:4px; }
+    .dept-label {
+      font-size:0.72rem; font-weight:700; letter-spacing:0.1em;
+      text-transform:uppercase; color:var(--gold); margin-bottom:14px;
+    }
+    .dept-contact-item { font-size:0.86rem; color:var(--text-mid); padding:3px 0; }
+
+    @media (max-width:1024px) {
+      .contact-info-grid { grid-template-columns:repeat(2,1fr); }
+    }
+    @media (max-width:768px) {
+      .contact-layout { grid-template-columns:1fr; }
+      .contact-info-grid { grid-template-columns:1fr 1fr; }
+      .dept-grid { grid-template-columns:1fr; }
+    }
+    @media (max-width:480px) {
+      .contact-info-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>Contact</span></div>
+    <span class="section-label page-hero-label">Get In Touch</span>
+    <h1>Contact Us</h1>
+    <p>We'd love to hear from you. Reach out with any enquiries, or visit us on campus during office hours.</p>
+  </div>
+</section>
+
+<!-- CONTACT CARDS -->
+<section style="background:var(--cream);padding:64px 0;">
+  <div class="container">
+    <div class="contact-info-grid reveal">
+      <div class="contact-info-card">
+        <div class="contact-icon">📍</div>
+        <h4>Location</h4>
+        <p>Parklands Area<br>Lusaka, Zambia<br>Plot 123, Great North Road</p>
+      </div>
+      <div class="contact-info-card">
+        <div class="contact-icon">📞</div>
+        <h4>Phone</h4>
+        <p><a href="tel:+260211000000">+260 211 000 000</a><br><a href="tel:+260977000000">+260 977 000 000</a><br>Mon–Fri: 07:30–17:00</p>
+      </div>
+      <div class="contact-info-card">
+        <div class="contact-icon">✉️</div>
+        <h4>Email</h4>
+        <p><a href="mailto:info@parklandsss.edu.zm">info@parklandsss.edu.zm</a><br><a href="mailto:admissions@parklandsss.edu.zm">admissions@parklandsss.edu.zm</a></p>
+      </div>
+      <div class="contact-info-card">
+        <div class="contact-icon">🕗</div>
+        <h4>Office Hours</h4>
+        <p>Monday–Friday<br>07:30 – 17:00<br>Saturday: 08:00 – 12:00</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN CONTACT SECTION -->
+<section class="contact-main section">
+  <div class="container">
+    <div class="contact-layout">
+      <!-- FORM -->
+      <div class="contact-form-wrap reveal-left">
+        <span class="section-label">Send a Message</span>
+        <h2 class="section-title">We're Here to Help</h2>
+        <div class="gold-line-left gold-line" style="margin-bottom:20px;"></div>
+        <p>Whether you have a question about admissions, academics, or school life — fill in the form and a member of our team will respond within 2 working days.</p>
+
+        <form class="contact-form" id="contactForm" novalidate style="margin-top:32px;">
+          <div class="success-msg" id="contactSuccess">
+            ✅ Message sent! We'll get back to you within 2 working days.
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cFirstName">First Name *</label>
+              <input type="text" id="cFirstName" placeholder="Your first name" required>
+            </div>
+            <div class="form-group">
+              <label for="cLastName">Last Name *</label>
+              <input type="text" id="cLastName" placeholder="Your surname" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cEmail">Email Address *</label>
+              <input type="email" id="cEmail" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+              <label for="cPhone">Phone Number</label>
+              <input type="tel" id="cPhone" placeholder="+260 9XX XXX XXX">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="cSubject">Subject *</label>
+            <select id="cSubject" required>
+              <option value="">Select a subject</option>
+              <option>Admissions Enquiry</option>
+              <option>Academics &amp; Curriculum</option>
+              <option>Fees &amp; Payments</option>
+              <option>Student Welfare</option>
+              <option>Events &amp; Activities</option>
+              <option>General Enquiry</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="cMessage">Your Message *</label>
+            <textarea id="cMessage" placeholder="Please describe your enquiry in as much detail as possible..." required></textarea>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+            <input type="checkbox" id="cConsent" style="width:16px;height:16px;accent-color:var(--gold);">
+            <label for="cConsent" style="font-size:0.82rem;color:var(--text-mid);">I consent to Parklands SS storing my data for correspondence purposes.</label>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="min-width:180px;">Send Message →</button>
+        </form>
+      </div>
+
+      <!-- MAP + HOURS -->
+      <div class="map-wrap reveal-right">
+        <span class="section-label">Find Us</span>
+        <h2 class="section-title">Our Location</h2>
+        <div class="gold-line-left gold-line" style="margin-bottom:20px;"></div>
+        <p>Conveniently located in the heart of Parklands, Lusaka. Public transport routes pass directly outside our main gate.</p>
+
+        <!-- Google Maps embed — replace src with real embed URL -->
+        <div class="map-frame" style="margin-top:24px;">
+          <div class="map-placeholder">
+            <div class="map-icon">🗺️</div>
+            <p><strong>Parklands Secondary School</strong><br>Plot 123, Great North Road<br>Parklands, Lusaka, Zambia</p>
+            <a href="https://maps.google.com/?q=Parklands+Lusaka+Zambia" target="_blank" rel="noopener">
+              Open in Google Maps ↗
+            </a>
+          </div>
+        </div>
+        <!-- To embed a real map, replace the div above with:
+        <iframe
+          src="https://www.google.com/maps/embed?pb=YOUR_EMBED_CODE"
+          width="100%" height="360" style="border:0;" allowfullscreen loading="lazy">
+        </iframe> -->
+
+        <!-- Office Hours -->
+        <div style="background:var(--cream);border-radius:var(--radius-md);padding:24px;margin-top:24px;border:1px solid var(--border);">
+          <h4 style="font-family:'DM Sans',sans-serif;font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;">Office Hours</h4>
+          <div class="hours-table">
+            <div class="hours-row"><span class="hours-day">Monday – Friday</span><span class="hours-time">07:30 – 17:00</span></div>
+            <div class="hours-row"><span class="hours-day">Saturday</span><span class="hours-time">08:00 – 12:00</span></div>
+            <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-closed">Closed</span></div>
+            <div class="hours-row"><span class="hours-day">Public Holidays</span><span class="hours-closed">Closed</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPARTMENT CONTACTS -->
+<section class="dept-section section">
+  <div class="container text-center">
+    <span class="section-label">Departments</span>
+    <h2 class="section-title">Direct Department Contacts</h2>
+    <div class="gold-line" style="margin-bottom:48px;"></div>
+    <div class="dept-grid reveal">
+      <div class="dept-card">
+        <h4>Head Teacher's Office</h4>
+        <div class="dept-label">Leadership</div>
+        <div class="dept-contact-item">📞 +260 211 000 001</div>
+        <div class="dept-contact-item">✉️ headteacher@parklandsss.edu.zm</div>
+        <div class="dept-contact-item" style="margin-top:8px;font-size:0.8rem;color:var(--text-light);">For escalations, formal complaints &amp; partnerships.</div>
+      </div>
+      <div class="dept-card">
+        <h4>Admissions Office</h4>
+        <div class="dept-label">Enrolment</div>
+        <div class="dept-contact-item">📞 +260 211 000 002</div>
+        <div class="dept-contact-item">✉️ admissions@parklandsss.edu.zm</div>
+        <div class="dept-contact-item" style="margin-top:8px;font-size:0.8rem;color:var(--text-light);">Applications, transfer enquiries &amp; enrolment queries.</div>
+      </div>
+      <div class="dept-card">
+        <h4>Finance Office</h4>
+        <div class="dept-label">Fees &amp; Payments</div>
+        <div class="dept-contact-item">📞 +260 211 000 003</div>
+        <div class="dept-contact-item">✉️ finance@parklandsss.edu.zm</div>
+        <div class="dept-contact-item" style="margin-top:8px;font-size:0.8rem;color:var(--text-light);">Fee statements, payment plans &amp; receipts.</div>
+      </div>
+      <div class="dept-card">
+        <h4>Academic Department</h4>
+        <div class="dept-label">Curriculum</div>
+        <div class="dept-contact-item">📞 +260 211 000 004</div>
+        <div class="dept-contact-item">✉️ academics@parklandsss.edu.zm</div>
+        <div class="dept-contact-item" style="margin-top:8px;font-size:0.8rem;color:var(--text-light);">Subject queries, results &amp; academic records.</div>
+      </div>
+      <div class="dept-card">
+        <h4>Welfare &amp; Counselling</h4>
+        <div class="dept-label">Student Support</div>
+        <div class="dept-contact-item">📞 +260 211 000 005</div>
+        <div class="dept-contact-item">✉️ welfare@parklandsss.edu.zm</div>
+        <div class="dept-contact-item" style="margin-top:8px;font-size:0.8rem;color:var(--text-light);">Student wellbeing, counselling &amp; pastoral care.</div>
+      </div>
+      <div class="dept-card">
+        <h4>Sports &amp; Activities</h4>
+        <div class="dept-label">Extracurricular</div>
+        <div class="dept-contact-item">📞 +260 211 000 006</div>
+        <div class="dept-contact-item">✉️ sports@parklandsss.edu.zm</div>
+        <div class="dept-contact-item" style="margin-top:8px;font-size:0.8rem;color:var(--text-light);">Teams, clubs, events &amp; activity schedules.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL LINKS -->
+<section style="background:var(--white);padding:64px 0;text-align:center;border-top:1px solid var(--border);">
+  <div class="container">
+    <span class="section-label">Follow Us</span>
+    <h2 class="section-title" style="margin-bottom:8px;">Connect on Social Media</h2>
+    <p style="max-width:480px;margin:0 auto 40px;">Stay up to date with school life, achievements, and events by following our official social media accounts.</p>
+    <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;" class="reveal">
+      <a href="#" class="btn btn-navy" style="gap:10px;">📘 Facebook</a>
+      <a href="#" class="btn btn-navy" style="gap:10px;">🐦 Twitter / X</a>
+      <a href="#" class="btn btn-navy" style="gap:10px;">📷 Instagram</a>
+      <a href="#" class="btn btn-navy" style="gap:10px;">▶️ YouTube</a>
+    </div>
+  </div>
+</section>
+
+<script src="components.js"></script>
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    document.getElementById('contactSuccess').style.display = 'block';
+    this.reset();
+    document.getElementById('contactSuccess').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+</script>
+</body>
+</html>

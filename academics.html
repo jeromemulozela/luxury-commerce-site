@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Academics — Parklands Secondary School</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Programme Cards */
+    .prog-section { background:var(--white); }
+    .prog-full-card {
+      background:var(--cream); border-radius:var(--radius-lg);
+      display:grid; grid-template-columns:280px 1fr; overflow:hidden;
+      border:1px solid var(--border); margin-bottom:28px;
+      box-shadow:var(--shadow-sm); transition:var(--transition);
+    }
+    .prog-full-card:hover { box-shadow:var(--shadow-md); transform:translateY(-4px); }
+    .prog-full-card.reverse { direction:rtl; }
+    .prog-full-card.reverse > * { direction:ltr; }
+    .prog-icon-panel {
+      display:flex; align-items:center; justify-content:center;
+      font-size:4rem; min-height:220px;
+    }
+    .prog-icon-panel.navy  { background:var(--navy); }
+    .prog-icon-panel.gold  { background:var(--gold); }
+    .prog-icon-panel.slate { background:#2D4A7A; }
+    .prog-details { padding:36px 40px; }
+    .prog-details h3 { margin-bottom:12px; }
+    .prog-details p { margin-bottom:20px; }
+    .subject-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px; }
+    .tag {
+      background:var(--white); border:1px solid var(--border);
+      border-radius:100px; padding:5px 14px;
+      font-size:0.78rem; font-weight:600; color:var(--text-mid);
+    }
+
+    /* Curriculum table */
+    .curriculum-section { background:var(--cream); }
+    .curriculum-table {
+      width:100%; border-collapse:collapse;
+      background:var(--white); border-radius:var(--radius-md);
+      overflow:hidden; box-shadow:var(--shadow-sm);
+    }
+    .curriculum-table th {
+      background:var(--navy); color:var(--white);
+      padding:16px 20px; text-align:left;
+      font-family:'DM Sans',sans-serif; font-size:0.82rem;
+      font-weight:600; letter-spacing:0.06em; text-transform:uppercase;
+    }
+    .curriculum-table td { padding:14px 20px; border-bottom:1px solid var(--border); font-size:0.9rem; }
+    .curriculum-table tr:last-child td { border-bottom:none; }
+    .curriculum-table tr:hover td { background:var(--cream); }
+    .badge {
+      display:inline-block; padding:3px 10px; border-radius:100px;
+      font-size:0.72rem; font-weight:600;
+    }
+    .badge-core { background:rgba(13,31,60,0.1); color:var(--navy); }
+    .badge-elec { background:rgba(201,168,76,0.2); color:#8B6914; }
+
+    /* Results section */
+    .results-section { background:var(--white); }
+    .results-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
+    .result-card {
+      background:var(--cream); border-radius:var(--radius-md);
+      padding:32px 24px; text-align:center; border:1px solid var(--border);
+      transition:var(--transition);
+    }
+    .result-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-md); border-color:var(--gold); }
+    .result-num {
+      font-family:'Cormorant Garamond',serif;
+      font-size:2.8rem; font-weight:700; color:var(--gold); line-height:1;
+    }
+    .result-label { font-size:0.82rem; color:var(--text-mid); margin-top:8px; }
+    .result-year { font-size:0.72rem; color:var(--text-light); margin-top:4px; font-weight:600; }
+
+    /* Facilities */
+    .facilities-section { background:var(--cream); }
+    .facility-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    .facility-card {
+      background:var(--white); border-radius:var(--radius-md);
+      padding:32px; text-align:center; border:1px solid var(--border);
+      box-shadow:var(--shadow-sm); transition:var(--transition);
+    }
+    .facility-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-md); }
+    .facility-icon {
+      width:72px; height:72px; border-radius:20px;
+      background:var(--navy); margin:0 auto 20px;
+      display:flex; align-items:center; justify-content:center; font-size:2rem;
+    }
+    .facility-card h3 { margin-bottom:10px; }
+
+    @media (max-width:768px) {
+      .prog-full-card { grid-template-columns:1fr; }
+      .prog-icon-panel { min-height:120px; }
+      .results-grid { grid-template-columns:1fr 1fr; }
+      .facility-grid { grid-template-columns:1fr; }
+    }
+    @media (max-width:480px) {
+      .results-grid { grid-template-columns:1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>Academics</span></div>
+    <span class="section-label page-hero-label">Learning</span>
+    <h1>Academic Programmes</h1>
+    <p>Rigorous, nationally-aligned curricula across three streams — designed to unlock every student's potential and open doors to higher education.</p>
+  </div>
+</section>
+
+<!-- PROGRAMMES -->
+<section class="prog-section section" id="programmes">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:56px;" class="reveal">
+      <span class="section-label">Streams</span>
+      <h2 class="section-title">Choose Your Path</h2>
+      <div class="gold-line"></div>
+    </div>
+
+    <div class="reveal">
+      <div class="prog-full-card">
+        <div class="prog-icon-panel navy">🔬</div>
+        <div class="prog-details">
+          <span class="section-label">Stream One</span>
+          <h3>Science &amp; Technology</h3>
+          <p>Our most popular stream, designed for students pursuing careers in medicine, engineering, ICT, and the natural sciences. Strong emphasis on practical laboratory work and mathematical reasoning.</p>
+          <div class="subject-tags">
+            <span class="tag">Mathematics</span>
+            <span class="tag">Biology</span>
+            <span class="tag">Chemistry</span>
+            <span class="tag">Physics</span>
+            <span class="tag">Computer Studies</span>
+            <span class="tag">English Language</span>
+          </div>
+          <a href="admissions.html" class="btn btn-navy btn-arrow">Apply for This Stream</a>
+        </div>
+      </div>
+
+      <div class="prog-full-card reverse">
+        <div class="prog-icon-panel gold">📚</div>
+        <div class="prog-details">
+          <span class="section-label">Stream Two</span>
+          <h3>Humanities &amp; Arts</h3>
+          <p>For the curious, creative thinker. This stream builds critical thinking, communication, and cultural understanding — ideal for law, journalism, social sciences, and education.</p>
+          <div class="subject-tags">
+            <span class="tag">English Language</span>
+            <span class="tag">Literature</span>
+            <span class="tag">History</span>
+            <span class="tag">Geography</span>
+            <span class="tag">Civic Education</span>
+            <span class="tag">Religious Education</span>
+          </div>
+          <a href="admissions.html" class="btn btn-navy btn-arrow">Apply for This Stream</a>
+        </div>
+      </div>
+
+      <div class="prog-full-card">
+        <div class="prog-icon-panel slate">💼</div>
+        <div class="prog-details">
+          <span class="section-label">Stream Three</span>
+          <h3>Commerce &amp; Economics</h3>
+          <p>Equipping future entrepreneurs, accountants, and economists. Students develop financial literacy, business acumen, and analytical skills applied to real-world commerce.</p>
+          <div class="subject-tags">
+            <span class="tag">Business Studies</span>
+            <span class="tag">Accounts</span>
+            <span class="tag">Economics</span>
+            <span class="tag">Mathematics</span>
+            <span class="tag">Entrepreneurship</span>
+            <span class="tag">English Language</span>
+          </div>
+          <a href="admissions.html" class="btn btn-navy btn-arrow">Apply for This Stream</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRICULUM TABLE -->
+<section class="curriculum-section section" id="curriculum">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px;" class="reveal">
+      <span class="section-label">Structure</span>
+      <h2 class="section-title">Curriculum Overview</h2>
+      <div class="gold-line" style="margin-bottom:16px;"></div>
+      <p class="section-sub">All streams follow the Examinations Council of Zambia (ECZ) curriculum for Grades 8–12.</p>
+    </div>
+    <div style="overflow-x:auto;" class="reveal">
+      <table class="curriculum-table">
+        <thead>
+          <tr>
+            <th>Grade</th>
+            <th>Core Subjects</th>
+            <th>Stream Subjects</th>
+            <th>Assessment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Grade 8</strong></td>
+            <td>English, Mathematics, Civic Education, Religious Education</td>
+            <td>Sciences, Humanities or Commerce (introductory)</td>
+            <td><span class="badge badge-core">Internal Exams</span></td>
+          </tr>
+          <tr>
+            <td><strong>Grade 9</strong></td>
+            <td>English, Mathematics, Civic Education, Religious Education</td>
+            <td>Stream-specific subjects deepen</td>
+            <td><span class="badge badge-core">Internal Exams</span></td>
+          </tr>
+          <tr>
+            <td><strong>Grade 10</strong></td>
+            <td>English, Mathematics, Civic Education</td>
+            <td>Full stream subjects begin; practical sessions</td>
+            <td><span class="badge badge-elec">ECZ Prep Exams</span></td>
+          </tr>
+          <tr>
+            <td><strong>Grade 11</strong></td>
+            <td>English, Mathematics</td>
+            <td>Advanced stream content; mock examinations</td>
+            <td><span class="badge badge-elec">Mock Exams (ECZ)</span></td>
+          </tr>
+          <tr>
+            <td><strong>Grade 12</strong></td>
+            <td>English, Mathematics</td>
+            <td>Full stream subjects at national level</td>
+            <td><span class="badge badge-core">ECZ National Exams</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="results-section section" id="results">
+  <div class="container text-center">
+    <span class="section-label">Performance</span>
+    <h2 class="section-title">Our Examination Results</h2>
+    <div class="gold-line" style="margin-bottom:48px;"></div>
+    <div class="results-grid reveal">
+      <div class="result-card">
+        <div class="result-num">95%</div>
+        <div class="result-label">Overall ECZ Pass Rate</div>
+        <div class="result-year">2025 Results</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num">12</div>
+        <div class="result-label">Distinction Students</div>
+        <div class="result-year">Grade 12, 2025</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num">87%</div>
+        <div class="result-label">University Entrance Rate</div>
+        <div class="result-year">5-year average</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num">#3</div>
+        <div class="result-label">Lusaka Province Ranking</div>
+        <div class="result-year">2025 ECZ Rankings</div>
+      </div>
+    </div>
+    <p style="margin-top:32px;font-size:0.88rem;color:var(--text-light);">Results verified against ECZ published data. Individual subject breakdowns available on request.</p>
+  </div>
+</section>
+
+<!-- FACILITIES -->
+<section class="facilities-section section">
+  <div class="container text-center">
+    <span class="section-label">Infrastructure</span>
+    <h2 class="section-title">Learning Facilities</h2>
+    <div class="gold-line" style="margin-bottom:48px;"></div>
+    <div class="facility-grid reveal">
+      <div class="facility-card">
+        <div class="facility-icon">🔬</div>
+        <h3>Science Laboratories</h3>
+        <p>Fully-equipped Biology, Chemistry, and Physics labs for hands-on experimental learning.</p>
+      </div>
+      <div class="facility-card">
+        <div class="facility-icon">💻</div>
+        <h3>Computer Room</h3>
+        <p>Modern computer lab with internet access for ICT studies and digital research.</p>
+      </div>
+      <div class="facility-card">
+        <div class="facility-icon">📖</div>
+        <h3>School Library</h3>
+        <p>A well-stocked library with textbooks, reference materials, and quiet study spaces.</p>
+      </div>
+      <div class="facility-card">
+        <div class="facility-icon">⚽</div>
+        <h3>Sports Grounds</h3>
+        <p>Full-size football pitch, basketball court, and athletics track for competitive sport.</p>
+      </div>
+      <div class="facility-card">
+        <div class="facility-icon">🎭</div>
+        <h3>Assembly Hall</h3>
+        <p>Multi-purpose hall for assemblies, debates, drama productions, and school events.</p>
+      </div>
+      <div class="facility-card">
+        <div class="facility-icon">🍽️</div>
+        <h3>School Canteen</h3>
+        <p>Clean, affordable meals served daily to keep students energised throughout the day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--navy);padding:80px 0;text-align:center;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 100% at 50% 0%,rgba(201,168,76,0.15),transparent);"></div>
+  <div class="container" style="position:relative;">
+    <h2 style="color:var(--white);margin-bottom:16px;">Start Your Academic Journey</h2>
+    <p style="color:rgba(255,255,255,0.65);max-width:480px;margin:0 auto 36px;">Spaces for the 2026 academic year are limited. Apply today to secure your place in one of our three academic streams.</p>
+    <a href="admissions.html" class="btn btn-primary btn-arrow">Apply Now</a>
+  </div>
+</section>
+
+<script src="components.js"></script>
+</body>
+</html>

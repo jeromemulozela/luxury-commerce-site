@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Parklands Secondary School</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* VISION/MISSION cards */
+    .vmv-grid {
+      display:grid; grid-template-columns:repeat(3,1fr); gap:28px;
+    }
+    .vmv-card {
+      background:var(--white); border-radius:var(--radius-md);
+      padding:40px 32px; border:1px solid var(--border);
+      box-shadow:var(--shadow-sm); text-align:center;
+      transition:var(--transition); position:relative; overflow:hidden;
+    }
+    .vmv-card::before {
+      content:''; position:absolute; top:0; left:0; right:0;
+      height:4px; background:var(--gold);
+    }
+    .vmv-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-md); }
+    .vmv-icon {
+      width:72px; height:72px; border-radius:20px;
+      background:var(--cream); margin:0 auto 24px;
+      display:flex; align-items:center; justify-content:center; font-size:2rem;
+    }
+    .vmv-card h3 { margin-bottom:14px; }
+
+    /* Staff section */
+    .staff-section { background:var(--cream); }
+    .staff-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+    .staff-card {
+      background:var(--white); border-radius:var(--radius-md);
+      overflow:hidden; box-shadow:var(--shadow-sm); border:1px solid var(--border);
+      transition:var(--transition); text-align:center;
+    }
+    .staff-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-md); }
+    .staff-photo {
+      height:180px; background:var(--navy);
+      display:flex; align-items:center; justify-content:center; font-size:3.5rem;
+    }
+    .staff-photo.alt { background:var(--navy-light); }
+    .staff-photo.gold-bg { background:linear-gradient(135deg,var(--gold),var(--gold-light)); }
+    .staff-info { padding:24px; }
+    .staff-info h3 { margin-bottom:4px; }
+    .staff-role {
+      font-size:0.78rem; font-weight:600; letter-spacing:0.1em;
+      text-transform:uppercase; color:var(--gold); margin-bottom:12px;
+    }
+
+    /* Why choose us */
+    .why-section { background:var(--white); }
+    .why-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
+    .why-img {
+      aspect-ratio:1; background:var(--navy);
+      border-radius:var(--radius-lg); display:flex;
+      align-items:center; justify-content:center; font-size:5rem;
+    }
+    .why-list { display:flex; flex-direction:column; gap:20px; }
+    .why-item {
+      display:flex; gap:16px; align-items:flex-start;
+      padding:20px; background:var(--cream);
+      border-radius:var(--radius-md); border:1px solid var(--border);
+      transition:var(--transition);
+    }
+    .why-item:hover { border-color:var(--gold); box-shadow:var(--shadow-sm); }
+    .why-check {
+      width:36px; height:36px; border-radius:50%;
+      background:var(--gold); color:var(--navy);
+      display:flex; align-items:center; justify-content:center;
+      font-weight:700; font-size:0.9rem; flex-shrink:0;
+    }
+    .why-item h4 { font-family:'DM Sans',sans-serif; font-weight:600; margin-bottom:4px; }
+
+    /* Timeline / History */
+    .history-section { background:var(--cream); }
+    .timeline { position:relative; max-width:720px; margin:0 auto; }
+    .timeline::before {
+      content:''; position:absolute; left:50%; transform:translateX(-50%);
+      top:0; bottom:0; width:2px; background:var(--cream-dark);
+    }
+    .timeline-item {
+      display:flex; margin-bottom:48px; position:relative;
+    }
+    .timeline-item:nth-child(odd) { flex-direction:row-reverse; }
+    .timeline-content {
+      width:calc(50% - 32px); background:var(--white);
+      border-radius:var(--radius-md); padding:24px;
+      box-shadow:var(--shadow-sm); border:1px solid var(--border);
+    }
+    .timeline-item:nth-child(odd) .timeline-content { margin-right:64px; }
+    .timeline-item:nth-child(even) .timeline-content { margin-left:64px; }
+    .timeline-dot {
+      position:absolute; left:50%; transform:translateX(-50%);
+      width:16px; height:16px; border-radius:50%;
+      background:var(--gold); border:3px solid var(--white);
+      box-shadow:0 0 0 2px var(--gold); top:16px;
+    }
+    .timeline-year {
+      font-size:0.75rem; font-weight:700; letter-spacing:0.1em;
+      text-transform:uppercase; color:var(--gold); margin-bottom:8px;
+    }
+    .timeline-content h4 { font-family:'DM Sans',sans-serif; font-weight:600; margin-bottom:6px; }
+
+    @media (max-width:768px) {
+      .vmv-grid { grid-template-columns:1fr; }
+      .staff-grid { grid-template-columns:1fr 1fr; }
+      .why-grid { grid-template-columns:1fr; }
+      .why-img { display:none; }
+      .timeline::before { left:16px; }
+      .timeline-item, .timeline-item:nth-child(odd) { flex-direction:column; }
+      .timeline-content,
+      .timeline-item:nth-child(odd) .timeline-content,
+      .timeline-item:nth-child(even) .timeline-content { width:100%; margin:0 0 0 40px; }
+      .timeline-dot { left:16px; }
+    }
+    @media (max-width:480px) {
+      .staff-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>About Us</span>
+    </div>
+    <span class="section-label page-hero-label">Our Story</span>
+    <h1>About Parklands SS</h1>
+    <p>A community dedicated to academic excellence, strong values, and the holistic development of every learner.</p>
+  </div>
+</section>
+
+<!-- VISION / MISSION / VALUES -->
+<section class="section" style="background:var(--white);">
+  <div class="container text-center">
+    <span class="section-label">Foundation</span>
+    <h2 class="section-title">Our Vision, Mission &amp; Values</h2>
+    <div class="gold-line" style="margin-bottom:48px;"></div>
+    <div class="vmv-grid reveal">
+      <div class="vmv-card" id="vision">
+        <div class="vmv-icon">🎯</div>
+        <h3>Our Vision</h3>
+        <p>To be the leading secondary school in Zambia — renowned for excellence in academics, discipline, and the moral formation of young people.</p>
+      </div>
+      <div class="vmv-card" id="vision">
+        <div class="vmv-icon">🚀</div>
+        <h3>Our Mission</h3>
+        <p>To provide quality, holistic education that develops the knowledge, skills, and character of every student — equipping them to thrive in a changing world.</p>
+      </div>
+      <div class="vmv-card">
+        <div class="vmv-icon">⭐</div>
+        <h3>Our Values</h3>
+        <p><strong>Respect · Discipline · Excellence<br>Integrity · Hard Work</strong></p>
+        <p style="margin-top:10px;">These five values are not just words — they are the foundation of daily life at Parklands SS.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT NARRATIVE -->
+<section class="section" style="background:var(--cream);">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;">
+      <div class="reveal-left">
+        <span class="section-label">Our Heritage</span>
+        <h2 class="section-title">A Decade of Shaping Tomorrow's Leaders</h2>
+        <div class="gold-line-left gold-line" style="margin-bottom:28px;"></div>
+        <p style="margin-bottom:16px;">Parklands Secondary School was founded with a singular conviction: that every young person, given the right environment, can achieve extraordinary things.</p>
+        <p style="margin-bottom:16px;">Over the years, we have grown from a small community school into one of Lusaka's most respected academic institutions — without ever losing sight of the values that define us.</p>
+        <p>Our motto, <em>"Narrow path is the way,"</em> speaks to a timeless truth: meaningful achievement requires discipline, perseverance, and the courage to do what is right — not what is easy.</p>
+        <a href="admissions.html" class="btn btn-navy btn-arrow" style="margin-top:32px;">Join Our Community</a>
+      </div>
+      <div class="reveal-right">
+        <div style="aspect-ratio:1;background:var(--navy);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;font-size:5rem;">🏛️</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HISTORY TIMELINE -->
+<section class="history-section section">
+  <div class="container text-center">
+    <span class="section-label">Milestones</span>
+    <h2 class="section-title">Our Journey</h2>
+    <div class="gold-line" style="margin-bottom:56px;"></div>
+    <div class="timeline reveal">
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-year">Year 1</div>
+          <h4>School Founded</h4>
+          <p>Parklands Secondary School opens its doors to its first 120 students with a vision for excellence.</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-year">Year 3</div>
+          <h4>First Grade 12 Cohort</h4>
+          <p>Our inaugural Grade 12 class achieves a 92% pass rate, putting Parklands on the national map.</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-year">Year 6</div>
+          <h4>New Science Block Opens</h4>
+          <p>A modern, fully-equipped science and computer laboratory block is commissioned.</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-content">
+          <div class="timeline-year">Year 10</div>
+          <h4>500+ Students &amp; Growing</h4>
+          <p>Enrolment crosses 500 students. Regional sports and academic awards follow.</p>
+        </div>
+        <div class="timeline-dot"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUR STAFF -->
+<section class="staff-section section" id="staff">
+  <div class="container text-center">
+    <span class="section-label">The Team</span>
+    <h2 class="section-title">Meet Our Leadership</h2>
+    <div class="gold-line" style="margin-bottom:48px;"></div>
+    <div class="staff-grid reveal">
+      <div class="staff-card">
+        <div class="staff-photo gold-bg">👨‍💼</div>
+        <div class="staff-info">
+          <h3>Mr. J. Mwamba</h3>
+          <div class="staff-role">Head Teacher</div>
+          <p>Provides strategic leadership, upholds academic standards, and champions the school's values across all departments.</p>
+        </div>
+      </div>
+      <div class="staff-card">
+        <div class="staff-photo">👩‍🏫</div>
+        <div class="staff-info">
+          <h3>Mrs. C. Lungu</h3>
+          <div class="staff-role">Deputy Head — Academics</div>
+          <p>Oversees curriculum delivery, teacher development, and examination preparation to drive outstanding results.</p>
+        </div>
+      </div>
+      <div class="staff-card">
+        <div class="staff-photo alt">👨‍🏫</div>
+        <div class="staff-info">
+          <h3>Mr. T. Phiri</h3>
+          <div class="staff-role">Head of Discipline</div>
+          <p>Maintains a safe, structured school environment where every student can focus and thrive.</p>
+        </div>
+      </div>
+      <div class="staff-card">
+        <div class="staff-photo">📚</div>
+        <div class="staff-info">
+          <h3>Teaching Staff</h3>
+          <div class="staff-role">40+ Qualified Teachers</div>
+          <p>Experienced, passionate educators across all subjects — committed to every student's success.</p>
+        </div>
+      </div>
+      <div class="staff-card">
+        <div class="staff-photo alt">🔬</div>
+        <div class="staff-info">
+          <h3>Lab Technicians</h3>
+          <div class="staff-role">Science Department</div>
+          <p>Support hands-on learning in our fully-equipped science laboratories.</p>
+        </div>
+      </div>
+      <div class="staff-card">
+        <div class="staff-photo gold-bg">🛠️</div>
+        <div class="staff-info">
+          <h3>Support Staff</h3>
+          <div class="staff-role">Administration &amp; Operations</div>
+          <p>Dedicated personnel who keep our campus safe, clean, and running smoothly every day.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="why-section section" id="why">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-img reveal-left">🎓</div>
+      <div class="reveal-right">
+        <span class="section-label">Why Parklands</span>
+        <h2 class="section-title">The Parklands Difference</h2>
+        <div class="gold-line-left gold-line" style="margin-bottom:32px;"></div>
+        <div class="why-list">
+          <div class="why-item">
+            <div class="why-check">✓</div>
+            <div>
+              <h4>Consistently High Academic Results</h4>
+              <p>95%+ ECZ pass rate year-on-year with students gaining entry to top universities.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-check">✓</div>
+            <div>
+              <h4>Strong Discipline &amp; Moral Formation</h4>
+              <p>A structured environment where character is built alongside academic knowledge.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-check">✓</div>
+            <div>
+              <h4>Modern Learning Environment</h4>
+              <p>Well-equipped classrooms, science labs, library, and computer room.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-check">✓</div>
+            <div>
+              <h4>Holistic Development</h4>
+              <p>Sports, clubs, debate, and community service alongside academics.</p>
+            </div>
+          </div>
+          <div class="why-item">
+            <div class="why-check">✓</div>
+            <div>
+              <h4>Dedicated, Experienced Teachers</h4>
+              <p>A team of qualified professionals who genuinely invest in student success.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:var(--navy);padding:80px 0;text-align:center;position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 60% 100% at 50% 0%,rgba(201,168,76,0.15),transparent);"></div>
+  <div class="container" style="position:relative;">
+    <h2 style="color:var(--white);margin-bottom:16px;">Want to Know More?</h2>
+    <p style="color:rgba(255,255,255,0.65);max-width:480px;margin:0 auto 36px;">Visit us on campus or reach out directly. We'd love to show you why Parklands is the right choice for your child.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="contact.html" class="btn btn-primary btn-arrow">Contact Us</a>
+      <a href="admissions.html" class="btn btn-outline">Apply Now</a>
+    </div>
+  </div>
+</section>
+
+<script src="components.js"></script>
+</body>
+</html>

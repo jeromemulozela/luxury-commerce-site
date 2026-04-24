@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parklands Secondary School — Excellence in Education</title>
+  <meta name="description" content="Parklands Secondary School in Lusaka, Zambia. Shaping future leaders through quality education and strong values.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── HOME-SPECIFIC STYLES ── */
+
+    /* HERO */
+    .hero {
+      background: var(--navy);
+      min-height: calc(100vh - var(--nav-h));
+      display:flex; align-items:center;
+      position:relative; overflow:hidden;
+      padding: 80px 0;
+    }
+    .hero::before {
+      content:'';
+      position:absolute; inset:0;
+      background:
+        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(201,168,76,0.14), transparent),
+        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(26,51,96,0.8), transparent);
+    }
+    .hero-bg-pattern {
+      position:absolute; inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-inner {
+      display:grid; grid-template-columns:1fr 1fr; gap:80px;
+      align-items:center; position:relative;
+    }
+    .hero-content { z-index:1; }
+    .hero-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(201,168,76,0.15); border:1px solid rgba(201,168,76,0.3);
+      border-radius:100px; padding:7px 16px; margin-bottom:28px;
+      font-size:0.78rem; font-weight:600; letter-spacing:0.1em;
+      text-transform:uppercase; color:var(--gold);
+    }
+    .hero-badge::before { content:'★'; font-size:0.7rem; }
+    .hero h1 { color:var(--white); margin-bottom:8px; }
+    .hero h1 em { color:var(--gold); font-style:italic; }
+    .hero-tagline {
+      font-size:1.08rem; color:rgba(255,255,255,0.55);
+      font-style:italic; margin-bottom:20px;
+      font-family:'Cormorant Garamond',serif;
+    }
+    .hero-desc { color:rgba(255,255,255,0.7); font-size:1.05rem; max-width:480px; margin-bottom:40px; }
+    .hero-actions { display:flex; gap:16px; flex-wrap:wrap; }
+
+    .hero-visual {
+      position:relative; z-index:1;
+    }
+    .hero-img-frame {
+      border-radius:var(--radius-lg);
+      overflow:hidden;
+      aspect-ratio:4/3;
+      background:var(--navy-light);
+      border:1px solid rgba(255,255,255,0.08);
+      position:relative;
+    }
+    .hero-img-frame img {
+      width:100%; height:100%; object-fit:cover; opacity:0.85;
+    }
+    .hero-img-placeholder {
+      width:100%; height:100%;
+      background: linear-gradient(135deg, #1A3360 0%, #0D1F3C 100%);
+      display:flex; align-items:center; justify-content:center;
+      font-size:4rem;
+    }
+    .hero-stats-pill {
+      position:absolute; bottom:-20px; left:-20px;
+      background:var(--white); border-radius:var(--radius-md);
+      padding:18px 24px; box-shadow:var(--shadow-lg);
+      display:flex; gap:24px;
+    }
+    .hero-stat-item { text-align:center; }
+    .hero-stat-item strong {
+      display:block; font-family:'Cormorant Garamond',serif;
+      font-size:1.6rem; font-weight:700; color:var(--navy);
+    }
+    .hero-stat-item span { font-size:0.72rem; color:var(--text-light); text-transform:uppercase; letter-spacing:0.08em; }
+
+    .hero-scroll {
+      position:absolute; bottom:32px; left:50%; transform:translateX(-50%);
+      display:flex; flex-direction:column; align-items:center; gap:6px;
+      color:rgba(255,255,255,0.35); font-size:0.72rem; letter-spacing:0.1em;
+      text-transform:uppercase;
+    }
+    .scroll-line {
+      width:1px; height:40px;
+      background:linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%,100% { opacity:0.3; height:30px; }
+      50% { opacity:0.8; height:50px; }
+    }
+
+    /* HIGHLIGHTS */
+    .highlights { background:var(--white); }
+    .highlight-card {
+      text-align:center; padding:40px 32px;
+      border-left:1px solid var(--border);
+    }
+    .highlight-card:first-child { border-left:none; }
+    .highlight-icon {
+      width:64px; height:64px; border-radius:16px;
+      background:var(--cream); display:flex; align-items:center; justify-content:center;
+      font-size:1.8rem; margin:0 auto 20px;
+    }
+    .highlight-card h3 { margin-bottom:10px; }
+    .highlights-grid {
+      display:grid; grid-template-columns:repeat(4,1fr);
+    }
+
+    /* ABOUT PREVIEW */
+    .about-preview { background:var(--cream); }
+    .about-inner {
+      display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;
+    }
+    .about-img-wrap { position:relative; }
+    .about-img-main {
+      aspect-ratio:3/4;
+      background:linear-gradient(135deg,#1A3360,#0D1F3C);
+      border-radius:var(--radius-lg); overflow:hidden;
+      display:flex; align-items:center; justify-content:center;
+      font-size:4rem;
+    }
+    .about-img-badge {
+      position:absolute; right:-24px; top:40px;
+      background:var(--gold); border-radius:var(--radius-md);
+      padding:20px 24px; text-align:center;
+      box-shadow:var(--shadow-md);
+    }
+    .about-img-badge strong {
+      display:block; font-size:2.2rem; font-weight:700;
+      font-family:'Cormorant Garamond',serif; color:var(--navy); line-height:1;
+    }
+    .about-img-badge span { font-size:0.78rem; color:var(--navy); opacity:0.7; font-weight:600; }
+    .about-content { }
+    .about-features { margin:32px 0; }
+    .about-feature {
+      display:flex; gap:16px; align-items:flex-start; margin-bottom:20px;
+    }
+    .about-feature-icon {
+      width:40px; height:40px; border-radius:10px;
+      background:rgba(201,168,76,0.15); flex-shrink:0;
+      display:flex; align-items:center; justify-content:center; font-size:1.1rem;
+    }
+    .about-feature h4 { font-family:'DM Sans',sans-serif; font-size:0.95rem; font-weight:600; margin-bottom:4px; }
+    .about-feature p { font-size:0.88rem; }
+
+    /* STATS STRIP */
+    .stats-section {
+      background: var(--navy); padding:64px 0;
+    }
+    .stats-grid {
+      display:grid; grid-template-columns:repeat(4,1fr);
+      divide-x: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat-item {
+      text-align:center; padding:16px;
+      border-right:1px solid rgba(255,255,255,0.1);
+    }
+    .stat-item:last-child { border-right:none; }
+    .stat-item .stat-num {
+      font-family:'Cormorant Garamond',serif;
+      font-size:3rem; font-weight:700; color:var(--gold);
+      line-height:1; display:block;
+    }
+    .stat-item .stat-label {
+      font-size:0.82rem; color:rgba(255,255,255,0.55);
+      text-transform:uppercase; letter-spacing:0.1em; margin-top:8px; display:block;
+    }
+
+    /* ACADEMICS PREVIEW */
+    .academics-preview { background:var(--cream); }
+    .programme-card {
+      background:var(--white); border-radius:var(--radius-md);
+      overflow:hidden; box-shadow:var(--shadow-sm); border:1px solid var(--border);
+      transition:var(--transition);
+    }
+    .programme-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-md); }
+    .programme-top {
+      height:120px; display:flex; align-items:center; justify-content:center;
+      font-size:2.5rem; position:relative;
+    }
+    .programme-top.navy { background:var(--navy); }
+    .programme-top.gold  { background:var(--gold); }
+    .programme-top.slate { background:#2D4A7A; }
+    .programme-body { padding:24px; }
+    .programme-body h3 { margin-bottom:8px; }
+    .programme-body p { font-size:0.88rem; margin-bottom:16px; }
+    .prog-link {
+      font-size:0.82rem; font-weight:600; color:var(--gold); letter-spacing:0.02em;
+    }
+    .prog-link:hover { text-decoration:underline; }
+
+    /* NEWS */
+    .news-section { background:var(--white); }
+    .news-card {
+      background:var(--cream); border-radius:var(--radius-md);
+      overflow:hidden; transition:var(--transition); border:1px solid var(--border);
+    }
+    .news-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-md); }
+    .news-img {
+      height:180px; background:var(--navy-light);
+      display:flex; align-items:center; justify-content:center; font-size:2.5rem;
+    }
+    .news-body { padding:24px; }
+    .news-meta {
+      font-size:0.75rem; color:var(--gold); font-weight:600;
+      text-transform:uppercase; letter-spacing:0.1em; margin-bottom:10px;
+    }
+    .news-body h3 { font-size:1.15rem; margin-bottom:10px; }
+    .news-body p { font-size:0.88rem; margin-bottom:16px; }
+    .news-link {
+      font-size:0.82rem; font-weight:600; color:var(--navy);
+      display:inline-flex; gap:4px; align-items:center;
+    }
+    .news-link:hover { color:var(--gold); }
+
+    /* TESTIMONIALS */
+    .testimonials-section { background:var(--cream); }
+    .testi-card {
+      background:var(--white); border-radius:var(--radius-md);
+      padding:36px 32px; box-shadow:var(--shadow-sm); border:1px solid var(--border);
+      transition:var(--transition);
+    }
+    .testi-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-md); }
+    .testi-quote {
+      font-family:'Cormorant Garamond',serif;
+      font-size:1.15rem; font-style:italic; line-height:1.7;
+      color:var(--text); margin-bottom:24px;
+    }
+    .testi-quote::before { content:'\201C'; font-size:2rem; color:var(--gold); line-height:0; vertical-align:-0.4em; margin-right:4px; }
+    .testi-author { display:flex; align-items:center; gap:14px; }
+    .testi-avatar {
+      width:48px; height:48px; border-radius:50%;
+      background:var(--navy); display:flex; align-items:center; justify-content:center;
+      font-size:1.2rem; flex-shrink:0;
+    }
+    .testi-name { font-weight:600; font-size:0.92rem; }
+    .testi-role { font-size:0.78rem; color:var(--text-light); }
+
+    /* CTA SECTION */
+    .cta-section {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      padding:96px 0; text-align:center; position:relative; overflow:hidden;
+    }
+    .cta-section::before {
+      content:'';
+      position:absolute; inset:0;
+      background:radial-gradient(ellipse 70% 100% at 50% 0%, rgba(201,168,76,0.15), transparent);
+    }
+    .cta-section .container { position:relative; }
+    .cta-section h2 { color:var(--white); margin-bottom:16px; }
+    .cta-section p { color:rgba(255,255,255,0.65); max-width:520px; margin:0 auto 40px; font-size:1.05rem; }
+    .cta-actions { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+
+    @media (max-width:768px) {
+      .hero-inner { grid-template-columns:1fr; gap:48px; }
+      .hero-visual { display:none; }
+      .highlights-grid { grid-template-columns:1fr 1fr; }
+      .highlight-card { border-left:none; border-top:1px solid var(--border); }
+      .highlight-card:nth-child(-n+2) { border-top:none; }
+      .about-inner { grid-template-columns:1fr; gap:40px; }
+      .about-img-badge { right:0; }
+      .stats-grid { grid-template-columns:1fr 1fr; }
+      .stat-item:nth-child(2) { border-right:none; }
+    }
+    @media (max-width:480px) {
+      .highlights-grid { grid-template-columns:1fr; }
+      .stats-grid { grid-template-columns:1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg-pattern"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">Zambia's Premier Secondary School</div>
+        <h1>Shaping <em>Future</em><br>Leaders</h1>
+        <p class="hero-tagline">"Narrow path is the way."</p>
+        <p class="hero-desc">At Parklands Secondary School, we combine rigorous academics, strong values, and a nurturing environment to help every student reach their highest potential.</p>
+        <div class="hero-actions">
+          <a href="admissions.html" class="btn btn-primary btn-arrow">Apply Now</a>
+          <a href="about.html" class="btn btn-outline">Learn More</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-img-frame">
+          <div class="hero-img-placeholder">🏫</div>
+        </div>
+        <div class="hero-stats-pill">
+          <div class="hero-stat-item">
+            <strong>500+</strong>
+            <span>Students</span>
+          </div>
+          <div class="hero-stat-item">
+            <strong>40+</strong>
+            <span>Teachers</span>
+          </div>
+          <div class="hero-stat-item">
+            <strong>95%</strong>
+            <span>Pass Rate</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    scroll
+  </div>
+</section>
+
+<!-- HIGHLIGHTS -->
+<section class="highlights section-sm">
+  <div class="container">
+    <div class="highlights-grid reveal">
+      <div class="highlight-card">
+        <div class="highlight-icon">🏆</div>
+        <h3>Academic Excellence</h3>
+        <p>Consistently top results in national examinations with a 95%+ pass rate year on year.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">🌿</div>
+        <h3>Modern Facilities</h3>
+        <p>Well-equipped science labs, library, computer room, and sports grounds.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">⚽</div>
+        <h3>Vibrant Sports</h3>
+        <p>Regional champions in football, athletics, and netball with outstanding coaching.</p>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-icon">🎓</div>
+        <h3>Moral Development</h3>
+        <p>A disciplined, character-centred community that instils lifelong values.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT PREVIEW -->
+<section class="about-preview section">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-img-wrap reveal-left">
+        <div class="about-img-main">🏛️</div>
+        <div class="about-img-badge">
+          <strong>10+</strong>
+          <span>Years of Excellence</span>
+        </div>
+      </div>
+      <div class="about-content reveal-right">
+        <span class="section-label">About Our School</span>
+        <h2 class="section-title">A Community Built on Values &amp; Vision</h2>
+        <div class="gold-line-left gold-line" style="margin-bottom:28px;"></div>
+        <p>Parklands Secondary School has been a beacon of quality education in Lusaka, Zambia. Our holistic approach develops students academically, socially, and morally — preparing them for life beyond the classroom.</p>
+        <div class="about-features">
+          <div class="about-feature">
+            <div class="about-feature-icon">🎯</div>
+            <div>
+              <h4>Clear Vision</h4>
+              <p>To be the leading secondary school in Zambia with excellent academic and moral standards.</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">🚀</div>
+            <div>
+              <h4>Strong Mission</h4>
+              <p>Providing quality education that develops knowledge, skills, and character in every learner.</p>
+            </div>
+          </div>
+          <div class="about-feature">
+            <div class="about-feature-icon">⭐</div>
+            <div>
+              <h4>Core Values</h4>
+              <p>Respect, Discipline, Excellence, Integrity, and Hard Work — lived daily on campus.</p>
+            </div>
+          </div>
+        </div>
+        <a href="about.html" class="btn btn-navy btn-arrow">Discover Our Story</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats-section stats-section">
+  <div class="container">
+    <div class="stats-grid reveal">
+      <div class="stat-item">
+        <span class="stat-num" data-target="500" data-suffix="+">0</span>
+        <span class="stat-label">Enrolled Students</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num" data-target="40" data-suffix="+">0</span>
+        <span class="stat-label">Qualified Teachers</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num" data-target="95" data-suffix="%">0</span>
+        <span class="stat-label">Exam Pass Rate</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num" data-target="25" data-suffix="+">0</span>
+        <span class="stat-label">Awards &amp; Honours</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACADEMICS PREVIEW -->
+<section class="academics-preview section">
+  <div class="container text-center">
+    <span class="section-label">Programmes</span>
+    <h2 class="section-title">Our Academic Tracks</h2>
+    <div class="gold-line" style="margin-bottom:16px;"></div>
+    <p class="section-sub">We offer structured, nationally-aligned curricula across three key streams — all designed to equip students for tertiary education and beyond.</p>
+    <div class="grid-3 reveal">
+      <div class="programme-card">
+        <div class="programme-top navy">🔬</div>
+        <div class="programme-body">
+          <h3>Science &amp; Technology</h3>
+          <p>Biology, Chemistry, Physics, Mathematics, and Computer Studies for future scientists and engineers.</p>
+          <a href="academics.html" class="prog-link">Explore →</a>
+        </div>
+      </div>
+      <div class="programme-card">
+        <div class="programme-top gold">📚</div>
+        <div class="programme-body">
+          <h3>Humanities &amp; Arts</h3>
+          <p>History, Geography, English Literature, Civic Education, and Social Studies for the well-rounded thinker.</p>
+          <a href="academics.html" class="prog-link">Explore →</a>
+        </div>
+      </div>
+      <div class="programme-card">
+        <div class="programme-top slate">💼</div>
+        <div class="programme-body">
+          <h3>Commerce &amp; Economics</h3>
+          <p>Business Studies, Accounts, Economics, and Entrepreneurship for the next generation of business leaders.</p>
+          <a href="academics.html" class="prog-link">Explore →</a>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:40px;">
+      <a href="academics.html" class="btn btn-navy btn-arrow">View Full Curriculum</a>
+    </div>
+  </div>
+</section>
+
+<!-- NEWS -->
+<section class="news-section section">
+  <div class="container">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:48px;" class="reveal">
+      <div>
+        <span class="section-label">Latest Updates</span>
+        <h2 class="section-title">News &amp; Announcements</h2>
+        <div class="gold-line-left gold-line"></div>
+      </div>
+      <a href="news.html" class="btn btn-outline" style="border-color:var(--border);color:var(--text);flex-shrink:0;">All News →</a>
+    </div>
+    <div class="grid-3 reveal">
+      <div class="news-card">
+        <div class="news-img">📣</div>
+        <div class="news-body">
+          <div class="news-meta">March 2026 · Academics</div>
+          <h3>Grade 12 Results — National Top Performers</h3>
+          <p>Parklands students excelled in the 2025 ECZ examinations, with 12 students achieving distinction in all subjects.</p>
+          <a href="news.html" class="news-link">Read More →</a>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-img">⚽</div>
+        <div class="news-body">
+          <div class="news-meta">February 2026 · Sports</div>
+          <h3>Football Team Wins Regional Championship</h3>
+          <p>Our U-18 football squad claimed the Lusaka Secondary Schools Regional Cup for the second consecutive year.</p>
+          <a href="news.html" class="news-link">Read More →</a>
+        </div>
+      </div>
+      <div class="news-card">
+        <div class="news-img">📅</div>
+        <div class="news-body">
+          <div class="news-meta">January 2026 · Admissions</div>
+          <h3>Enrolment Now Open for 2026 Academic Year</h3>
+          <p>Applications for Grade 8 entry are now being accepted. Limited spaces available — apply early to secure your place.</p>
+          <a href="admissions.html" class="news-link">Apply Now →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section section">
+  <div class="container text-center">
+    <span class="section-label">Voices</span>
+    <h2 class="section-title">What Our Community Says</h2>
+    <div class="gold-line" style="margin-bottom:48px;"></div>
+    <div class="grid-3 reveal">
+      <div class="testi-card">
+        <p class="testi-quote">Parklands gave my daughter more than just good grades — it built her character. She graduated with confidence, discipline, and a love of learning that sets her apart.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">👩</div>
+          <div style="text-align:left;">
+            <div class="testi-name">Mrs. Banda</div>
+            <div class="testi-role">Parent of Class of 2024</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">The teachers here truly care. They pushed me to be better every day and never gave up on me. I went on to study Engineering at UNZA — I owe that to Parklands.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">👨‍🎓</div>
+          <div style="text-align:left;">
+            <div class="testi-name">Chanda Mwale</div>
+            <div class="testi-role">Alumni, Class of 2022</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <p class="testi-quote">As a teacher, I'm proud to be part of a school that takes both education and values seriously. The culture of excellence here is real and it starts from the top.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">👨‍🏫</div>
+          <div style="text-align:left;">
+            <div class="testi-name">Mr. Phiri</div>
+            <div class="testi-role">Mathematics Teacher, 8 Years</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <span class="section-label" style="color:var(--gold-light);">Join Us</span>
+    <h2>Ready to Begin Your Journey?</h2>
+    <p>Applications for the 2026 academic year are open. Secure your child's future with a Parklands education today.</p>
+    <div class="cta-actions">
+      <a href="admissions.html" class="btn btn-primary btn-arrow">Apply Now</a>
+      <a href="contact.html" class="btn btn-outline">Get in Touch</a>
+    </div>
+  </div>
+</section>
+
+<script src="components.js"></script>
+</body>
+</html>
